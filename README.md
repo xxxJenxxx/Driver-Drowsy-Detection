@@ -61,7 +61,7 @@ features = extractor(image)</li></ul></li>
   <li>Run data.py and models.py<ul>
   	<li><code>$ python data.py<br>$ python models.py</code></li>
     <li>data.py: use to get the data (&ast;.npy)</li>
-    <li>models: use to construct the model</li>
+    <li>models.py: use to construct the model</li>
   </ul></li>
   <li>Run train.py<ul>
   	<li><code>$ python train.py</code></li>
