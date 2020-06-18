@@ -100,8 +100,6 @@ def skeleton_tracker1(v, file_name):
     y = 0
     w = int(v.get(3))-2*x
     h = int(v.get(4))
-    ey = None
-    ey1 = None
 
     while(1):
         ret ,frame = v.read() # read another frame
@@ -137,33 +135,31 @@ def skeleton_tracker1(v, file_name):
         for (ex,ey,ew,eh) in eyes_right:
             break
 
-        if (ey != None and ey1 != None):
-            if (ey < ey1):
-                cy = ey
-                ch = ey1 - ey + eh
-            else:
-                cy = ey1
-                ch = ey - ey1 + eh1
-            
-            #????
-            frame[ey+eh:ey, ex:ex1+ew1]
+        if (ey < ey1):
+            cy = ey
+            ch = ey1 - ey + eh
+        else:
+            cy = ey1
+            ch = ey - ey1 + eh1
+        
+        #????
+        frame[ey+eh:ey, ex:ex1+ew1]
 
-            # cv2.rectangle(roi_color,(ex-5,ey-5),(ex+(ex1-ex)+ew1+5,ey+eh+5),(0,255,0),2)
-            cv2.rectangle(roi_color,(ex-5,cy-10),(ex1+ew1+15,cy+ch+5),(0,255,0),2)
+        # cv2.rectangle(roi_color,(ex-5,ey-5),(ex+(ex1-ex)+ew1+5,ey+eh+5),(0,255,0),2)
+        cv2.rectangle(roi_color,(ex-5,cy-10),(ex1+ew1+15,cy+ch+5),(0,255,0),2)
 
-            # croppedImg = roi_color[ey1:ey1+eh1, ex:ex1+ew1]
-            croppedImg = roi_color[cy-5:cy+ch, ex:ex1+ew1+10]
+        # croppedImg = roi_color[ey1:ey1+eh1, ex:ex1+ew1]
+        croppedImg = roi_color[cy-5:cy+ch, ex:ex1+ew1+10]
 
-            if(croppedImg.shape[0]<=0 or croppedImg.shape[1]<=0):
-                frameCounter = frameCounter + 1
-                continue
+        if(croppedImg.shape[0]<=0 or croppedImg.shape[1]<=0):
+            frameCounter = frameCounter + 1
+            continue
 
-            print (croppedImg.shape)
-            cv2.imshow('img',frame)
-            cv2.imshow('img1',croppedImg)
-            output_name = "./"+sys.argv[4]+str(frameCounter)+".jpg"
-            cv2.imwrite(output_name, croppedImg)
-            
+        print (croppedImg.shape)
+        cv2.imshow('img',frame)
+        cv2.imshow('img1',croppedImg)
+        output_name = "./"+sys.argv[4]+str(frameCounter)+".jpg"
+        cv2.imwrite(output_name, croppedImg)
         k = cv2.waitKey(1) & 0xff
         if k == 27:
             break

@@ -11,7 +11,8 @@ import sys
 
 class ResearchModels():
     def __init__(self, nb_classes, model, seq_length,
-                 saved_model=None, features_length=1280):
+                #  saved_model=None, features_length=1024):
+                saved_model=None, features_length=512):
 
         # Set defaults.
         self.seq_length = seq_length
