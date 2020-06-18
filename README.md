@@ -28,7 +28,7 @@
 
 #### 3. Extract Features
 * Run extract_features_mobile.py<br>
-<code>$ python extract_features_mobile.py</code>
+<code>$ python extract_features_10.py</code>
 * Input: data/data_file.csv, output_graph.pb
 * Output: data/sequences/*.npy
 
@@ -45,12 +45,12 @@ features = extractor(image)</li></ul></li>
 
 ##### def extractor(image_path) (line 42 to 60)
 <ol style="list-style-type:lower-roman;">
-  <li>line 44 to 47<ul><li>read the pb file and load the retrained model</li></ul></li>
-  <li>line 55<ul><li>get the tensor needed to run</li></ul></li>
-  <li>line 57<ul><li>get the image data</li><li>
+  <li><ul><li>read the pb file and load the retrained model</li></ul></li>
+  <li><ul><li>get the tensor needed to run</li></ul></li>
+  <li><ul><li>get the image data</li><li>
   image_data = read_tensor_from_image_file(image_path)</li></ul></li>
-  <li>line 58 to 59<ul><li>obtain the image pooling features through process the image data by the pooling_tensor</li></ul></li>
-  <li>line 64<ul><li>return the image pooling features</li></ul></li>
+  <li><ul><li>obtain the image pooling features through process the image data by the pooling_tensor</li></ul></li>
+  <li><ul><li>return the image pooling features</li></ul></li>
 </ol>
 
 ##### def read_tensor_from_image_file(file_name,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input_height=224, # height of the model requires<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input_width=224,  # width of the model requires<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input_mean=0,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input_std=255)<br>(line 14 to 40)
@@ -58,17 +58,17 @@ features = extractor(image)</li></ul></li>
 		
 #### 4. Train and Test
 <ol style="list-style-type:lower-alpha;">
-  <li>Run data.py and models.py<ul>
+  <li>Run data_10.py and models_mobile_v1.py<ul>
   	<li><code>$ python data.py<br>$ python models.py</code></li>
-    <li>data.py: use to get the data (&ast;.npy)</li>
-    <li>models.py: use to construct the model</li>
+    <li>data_10.py: use to get the data (&ast;.npy)</li>
+    <li>models_mobile_v1.py: use to construct the model</li>
   </ul></li>
-  <li>Run train.py<ul>
-  	<li><code>$ python train.py</code></li>
-    <li>line 43: X = X.reshape(2, 26, -1)<br>&nbsp;&nbsp;&nbsp;&nbsp;modify "2" according to the amount (Alert+Drowsy) of training data have</li>
-    <li>line 45: X_test = X_test.reshape(2, 26, -1)<br>&nbsp;&nbsp;&nbsp;&nbsp;modify "2" according to the amount (Alert+Drowsy) of testing data have</li>
+  <li>Run train_10.py<ul>
+  	<li><code>$ python train_10.py</code></li>
+    <li>X = X.reshape(2, 26, -1)<br>&nbsp;&nbsp;&nbsp;&nbsp;modify "2" according to the amount (Alert+Drowsy) of training data have</li>
+    <li>X_test = X_test.reshape(2, 26, -1)<br>&nbsp;&nbsp;&nbsp;&nbsp;modify "2" according to the amount (Alert+Drowsy) of testing data have</li>
     <li>where the amount of training/testing is according to data_file.csv column[0]</li>
-    <li>line 86: nb_epoch = 30<br>&nbsp;&nbsp;&nbsp;&nbsp;modify "30" for how many epoch needed to train</li>
+    <li>nb_epoch = 30<br>&nbsp;&nbsp;&nbsp;&nbsp;modify "30" for how many epoch needed to train</li>
   </ul></li>
 </ol>
 
