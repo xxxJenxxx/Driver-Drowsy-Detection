@@ -1,10 +1,13 @@
-# Drowsy-Driver-Detection
+# Alarm System of Drowsy Driving on Jetson TX2
 
 # Drowsy Driver Alert
-
+Demo website: http://cv.cs.nthu.edu.tw/upload/undergraduate/Alarm_System_of_Drowsy_Driving/index.html?fbclid=IwAR2wXPX_b3bJWMOp-xtbQIS3OUN7MqOU8KOSmPE1T-muc3H7Cm2YONOxAj8
 ## Environment
-
-## Steps to run
+1. Python 3.6
+2. Tensorflow 1.14
+## Simple run
+* Run run webcam_extract_eyes.sh<br>
+## Steps to retrain all the process
 #### 1. Eye Detection
 * Run run_extract_eyes.sh<br>
 <code>$ sh run_extract_eyes.sh n</code><br>
