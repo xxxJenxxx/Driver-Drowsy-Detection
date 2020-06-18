@@ -14,7 +14,7 @@
 * Output: Output/$i/Alert/&ast;.jpg, Output/$i/Drowsy/&ast;.jpg<br>
 &nbsp;&nbsp;&nbsp;&nbsp;where $i is a number from 1 to n
 * Crop frames (start when successfully detect eyes) for each video (training data for MobileNet)
-	* run_extract_eyes.sh line 171: if int(str(frameCounter)) >= 1000:<br>
+	* run_extract_eyes.sh: if int(str(frameCounter)) >= 1000:<br>
 	&emsp; modify "1000" to change the amount of the cropped image
 
 #### 2. Retrain MobileNet V1 (depth multiplier 1.00)
@@ -34,13 +34,13 @@
 
 ##### def extract_features() (line 66 to line 88)
 <ol style="list-style-type:lower-roman;">
-<li>line 67 to line 68<ul><li>access data_file.csv</li></ul></li>
-<li>line 70 to line 71<ul><li>named the sequence to save</li></ul></li>
-<li>line 73 to 75<ul><li>get the training or testing data (ecah includes 26 images) (eg. training/Drowsy/Drowsy_Video1/*.jpg)</li></ul></li>
-<li>line 78 to 80<ul><li>read one of the image from the 26 images to get its features</li><li>
+<li><ul><li>access data_file.csv</li></ul></li>
+<li><ul><li>named the sequence to save</li></ul></li>
+<li><ul><li>get the training or testing data (ecah includes 26 images) (eg. training/Drowsy/Drowsy_Video1/*.jpg)</li></ul></li>
+<li><ul><li>read one of the image from the 26 images to get its features</li><li>
 features = extractor(image)</li></ul></li>
-<li>line 85<ul><li>after extracted features of 26 images, save the sequence></li></ul></li>
-<li>line 87<ul><li>append the features to the sequence</li></ul></li>
+<li><ul><li>after extracted features of 26 images, save the sequence></li></ul></li>
+<li><ul><li>append the features to the sequence</li></ul></li>
 </ol>
 
 ##### def extractor(image_path) (line 42 to 60)
